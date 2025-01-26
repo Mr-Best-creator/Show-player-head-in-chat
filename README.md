@@ -8,7 +8,7 @@
    
 > Java   
 > スクリプトがまだありません   
-> [Java README.md](/Java/src/main/README.me)
+> [Java README.md](/Java/src/main/README.md)
 
 ## ライセンス
 > [LICENSE.md](/LICENSE)
