@@ -11,4 +11,4 @@
 > [Java README.md](/Java/src/main/README.md)
 
 ## ライセンス
-> [LICENSE.md](/LICENSE)
+> [LICENSE](/LICENSE)
