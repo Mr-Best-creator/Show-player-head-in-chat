@@ -29,9 +29,8 @@ pip install Pillow
 ```bat
  pip3 install Pillow
 ```   
-3, スクリプトファイル(main.py)を
-[ダウンロード](/Python/src/main/main.py)
-またはこのプロジェクトをフォーク   
+3, リリースからスクリプトファイル(main.py)を
+ダウンロード   
 4, ファイルをダブルクリック(環境によって不可)または
 ```bat
 py [ダウンロードしたスクリプトファイルの絶対パス]
