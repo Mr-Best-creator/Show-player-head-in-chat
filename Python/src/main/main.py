@@ -13,10 +13,23 @@ button1 = tk.Button(master=root, text="ファイルを選択して生成する")
 button1.pack()
 
 label1 = tk.Label(master=root, text="↓生成されたコマンド(1.16+)")
+label1.pack()
 
 string_ver1 = tk.StringVar(master=root)
-text1 = tk.Entry(master=root, textvariable=string_ver1)
+text1 = tk.Entry(master=root, textvariable=string_ver1, width=75)
 text1.pack()
+
+
+def copy_to_clipboard():
+    copy_text = text1.get()
+    root.clipboard_clear()
+    root.clipboard_append(copy_text)
+    root.update()
+
+
+copy_button = tk.Button(master=root, text="クリップボードにコピー", command=copy_to_clipboard)
+copy_button.pack()
+
 
 def open_and_convert():
     player_skin_file_path = tkf.askopenfilename(filetypes=[(".png", "*.png")], initialdir=os.path.abspath(os.path.dirname(__file__)), title="プレイヤースキン(.pngファイル)を選択してコマンドを生成する")
@@ -36,13 +49,29 @@ def open_and_convert():
             head_end_y = head_start_y + 8
             
             head = [row[head_start_x:head_end_x] for row in skin[head_start_y:head_end_y]]
+            temp_head_list = []
+            for a in head:
+                for b in a:
+                    temp_head_list.append(b)
+                temp_head_list.append(r"\n")
             
-            for data_list in head:
-                for data in data_list:
-                    command += ',{\"text\":\"█\",\"color\":\"' + data + '\"}'
-                command += ',\"\\n\"'
+            temp_text = ""
+            last_color = ""
+            for i in range(len(temp_head_list)):
+                if temp_head_list[i] == r"\n":
+                    temp_text += r"\n"
+                else:
+                    if last_color == "":
+                        temp_text += "█"
+                        last_color = temp_head_list[i]
+                    elif last_color == temp_head_list[i]:
+                        temp_text += "█"
+                    else:
+                        command += '{\"text\":\"' + temp_text + '\",\"color\":\"' + last_color + '\"}'
+                        temp_text = ""
+                        last_color = temp_head_list[i]
+                        temp_text += "█"
             command += ',{\"text\":\"' + os.path.splitext(os.path.basename(player_skin_file_path))[0] + '\",\"color\":\"#FFFFFF\"}]'
-            
             
             string_ver1.set(command)
             
