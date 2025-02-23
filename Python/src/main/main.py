@@ -67,13 +67,16 @@ def open_and_convert():
                     elif last_color == temp_head_list[i]:
                         temp_text += "█"
                     else:
-                        command += '{\"text\":\"' + temp_text + '\",\"color\":\"' + last_color + '\"}'
+                        command += ',{\"text\":\"' + temp_text + '\",\"color\":\"' + last_color + '\"}'
                         temp_text = ""
                         last_color = temp_head_list[i]
                         temp_text += "█"
-            command += ',{\"text\":\"' + os.path.splitext(os.path.basename(player_skin_file_path))[0] + '\",\"color\":\"#FFFFFF\"}]'
             
-            string_ver1.set(command)
+            
+    command += ',{\"text\":\"' + temp_text + '\",\"color\":\"' + last_color + '\"}'
+    command += ',{\"text\":\"' + os.path.splitext(os.path.basename(player_skin_file_path))[0] + '\",\"color\":\"#FFFFFF\"}]'
+
+    string_ver1.set(command)
             
 
 button1.config(command=open_and_convert)
