@@ -2,7 +2,7 @@
 
 # 紹介動画
 YouTubeチャンネルにて紹介動画を公開しています！
-見てみてね！
+見てみてね！   
 [YouTube紹介動画](https://youtube.com/playlist?list=PLtC9IDXQwL8RQqZP94aovnWi9AnfknfYT&feature=shared)
 
 
